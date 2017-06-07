@@ -8,9 +8,19 @@ namespace C_Sharp_IPMessageSticker
 {
     public partial class FormTestFunction : Form
     {
+        private bool isActive = false;
+
+        private int screenWidth;
+        private int screenHeight;
+
         public FormTestFunction()
         {
             InitializeComponent();
+
+            screenWidth = Screen.PrimaryScreen.Bounds.Width;
+            screenHeight = Screen.PrimaryScreen.Bounds.Height;
+
+            this.Hide();
             backgroundWorker1.RunWorkerAsync();
         }
 
@@ -24,10 +34,36 @@ namespace C_Sharp_IPMessageSticker
         {
             while (true)
             {
-                Thread.Sleep(1000);
-                if (cMain.CheckProcess())
+                Thread.Sleep(200);
+
+                var process = cMain.GetProcessIPMSG();
+                if (process != null)
                 {
-                    this.Show();
+                    if (process.MainWindowTitle.Contains("Send Message"))
+                    {
+                        Invoke((MethodInvoker)delegate
+                        {
+                            if (!isActive)
+                            {
+                                this.Location = new Point(screenWidth - this.Width + 10, screenHeight - (this.Height + 30));
+                                this.Show();
+                            }
+
+                            isActive = true;
+                        });
+                    }
+                    else
+                    {
+                        Invoke((MethodInvoker)delegate
+                        {
+                            if (isActive)
+                            {
+                                this.Hide();
+                            }
+
+                            isActive = false;
+                        });
+                    }
                 }
             }
         }
