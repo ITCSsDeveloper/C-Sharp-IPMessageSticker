@@ -72,8 +72,28 @@ namespace C_Sharp_IPMessageSticker
             if (!Directory.Exists(Root + stickerName))
                 throw new Exception("No Sticker Name");
 
+
             Directory.Delete(Root + stickerName.Trim(),true);
         }
+
+        public static void RenameSticker(string stickerName, string newName)
+        {
+            if (string.IsNullOrWhiteSpace(stickerName))
+                throw new Exception("Sticker Name Invalid.");
+
+            if (!Directory.Exists(Root + stickerName))
+                throw new Exception("No Sticker Name");
+
+            if (Directory.Exists(Root + newName))
+                throw new Exception("Directory Exists.");
+
+
+
+
+
+        }
+
+
 
         private static void CopySticker(string source, string destination)
         {
