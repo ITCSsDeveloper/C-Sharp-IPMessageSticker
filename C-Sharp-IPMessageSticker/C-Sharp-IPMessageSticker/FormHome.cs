@@ -15,6 +15,8 @@ namespace C_Sharp_IPMessageSticker
     public partial class FormHome : Form
     {
         private bool isActive = false;
+        private bool isHideByUser = false;
+
 
         private int screenWidth;
         private int screenHeight;
@@ -28,13 +30,14 @@ namespace C_Sharp_IPMessageSticker
         public FormHome()
         {
             InitializeComponent();
-
+            screenWidth = Screen.PrimaryScreen.Bounds.Width;
+            screenHeight = Screen.PrimaryScreen.Bounds.Height;
+            Location = new Point(screenWidth - (Width), screenHeight - (Height + 40));
             AllSticker = cSticker.GetStickers();
             GetListItemParent();
             GetListItemChild();
-
+            Hide();
             Thread.Sleep(100);
-            this.Hide();
             backgroundWorker1.RunWorkerAsync();
         }
 
@@ -96,6 +99,8 @@ namespace C_Sharp_IPMessageSticker
             GetListItemChild(key);
         }
 
+
+
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             while (true)
@@ -113,11 +118,8 @@ namespace C_Sharp_IPMessageSticker
                         {
                             if (!isActive)
                             {
-                                Location = new Point(screenWidth - (Width), screenHeight - (Height + 40));
-                                Show();
+                                SetShow();
                             }
-
-                            isActive = true;
                         });
                     }
                     else
@@ -126,14 +128,33 @@ namespace C_Sharp_IPMessageSticker
                         {
                             if (isActive)
                             {
-                                this.Hide();
+                                SetHide();
+                                
                             }
-
-                            isActive = false;
                         });
                     }
                 }
             }
+        }
+
+        private void SetHide()
+        {
+            isActive = false;
+            Location = new Point(screenWidth - (20), screenHeight - (Height + 40));
+            listViewParent.Visible = false;
+            listViewChild.Visible = false;
+            Size = new Size(23, 292);
+            btnHideShow.Text = @"<";
+        }
+
+        private void SetShow()
+        {
+            isActive = true;
+            listViewParent.Visible = true;
+            listViewChild.Visible = true;
+            Size = new Size(334, 292);
+            Location = new Point(screenWidth - (Width), screenHeight - (Height + 40));
+            btnHideShow.Text = @">";
         }
 
         private void listViewChild_MouseClick(object sender, MouseEventArgs e)
@@ -150,24 +171,24 @@ namespace C_Sharp_IPMessageSticker
             }
 
         }
+
+        private void linkLabelSetting_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void btnHideShow_Click(object sender, EventArgs e)
+        {
+            if (isActive)
+            {
+                
+                SetHide();
+            }
+            else
+            {
+                SetShow();
+
+            }
+        }
     }
 }
-
-
-
-//
-//foreach (var folder in dir.GetDirectories())
-//{
-//    imageListParent.Images.Add(Image.FromFile(folder.GetFiles()[0].FullName));
-//}
-
-//listViewParent.View = View.LargeIcon;
-//imageListParent.ImageSize = new Size(25, 25);
-//listViewParent.LargeImageList = imageListParent;
-
-//for (int j = 0; j < imageListParent.Images.Count; j++)
-//{
-//    ListViewItem item = new ListViewItem();
-//    item.ImageIndex = j;
-//    listViewParent.Items.Add(item);
-//}
