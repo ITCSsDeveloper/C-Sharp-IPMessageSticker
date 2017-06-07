@@ -1,6 +1,6 @@
 ﻿namespace C_Sharp_IPMessageSticker
 {
-    partial class Form1
+    partial class FormHome
     {
         /// <summary>
         /// Required designer variable.
@@ -33,6 +33,7 @@
             this.listViewParent = new System.Windows.Forms.ListView();
             this.imageListChild = new System.Windows.Forms.ImageList(this.components);
             this.imageListParent = new System.Windows.Forms.ImageList(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // listViewChild
@@ -43,6 +44,7 @@
             this.listViewChild.Size = new System.Drawing.Size(293, 217);
             this.listViewChild.TabIndex = 0;
             this.listViewChild.UseCompatibleStateImageBehavior = false;
+            this.listViewChild.SelectedIndexChanged += new System.EventHandler(this.listViewChild_SelectedIndexChanged);
             // 
             // listViewParent
             // 
@@ -74,15 +76,19 @@
             this.imageListParent.ImageSize = new System.Drawing.Size(16, 16);
             this.imageListParent.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // Form1
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
+            // FormHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(299, 262);
             this.Controls.Add(this.listViewChild);
             this.Controls.Add(this.listViewParent);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "FormHome";
+            this.Text = "Sticker";
             this.ResumeLayout(false);
 
         }
@@ -93,6 +99,7 @@
         private System.Windows.Forms.ListView listViewParent;
         private System.Windows.Forms.ImageList imageListChild;
         private System.Windows.Forms.ImageList imageListParent;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
 
     }
 }
