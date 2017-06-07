@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -78,6 +79,31 @@ namespace C_Sharp_IPMessageSticker
                     }
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog1.SelectedPath = null;
+
+            DialogResult result = folderBrowserDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                textBox1.Text = folderBrowserDialog1.SelectedPath;
+
+                //string[] files = Directory.GetFiles(folderBrowserDialog1.SelectedPath);
+                //MessageBox.Show("Files found: " + files.Length.ToString(), "Message");
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            cSticker.ImportStickers(txtStickName.Text.Trim(), textBox1.Text.Trim());
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            cSticker.DeleteSticker(textBox2.Text.Trim());
+      
         }
     }
 }
