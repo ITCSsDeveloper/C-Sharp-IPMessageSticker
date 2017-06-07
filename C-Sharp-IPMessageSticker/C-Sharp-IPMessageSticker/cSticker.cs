@@ -1,37 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace C_Sharp_IPMessageSticker
 {
-   public class cSticker
+    public class cSticker
     {
-       public static IEnumerable<StickerSet> GetStickers()
-       {
-           List<StickerSet> sss = new List<StickerSet>();
+        private static string Root = @"Stickers/";
 
+        public static IEnumerable<StickerSet> GetStickers()
+        {
+            var stickerSets = new List<StickerSet>();
 
+            if (!Directory.Exists(Root))
+                Directory.CreateDirectory(Root);
 
+            // Get Folder list 
+            var folders = Directory.GetDirectories(Root);
+            foreach (var folder in folders)
+            {
+                var temp = new StickerSet();
+                var files = Directory.GetFiles(folder + @"/", "*.png");
 
-           return sss;
-       }
+                temp.NameHeader = folder.Replace(Root, "").Trim();
+                temp.IconHeader = files.FirstOrDefault();
+
+                var tempStickers = new List<Sticker>();
+                foreach (var file in files)
+                {
+                    var sTemp = new Sticker();
+                    sTemp.Name = file.Replace(Root, "").Replace(temp.NameHeader + @"/", "").Replace(@".png", "").Trim();
+                    sTemp.Path = file.Trim();
+                    tempStickers.Add(sTemp);
+                }
+
+                temp.Stickers = tempStickers;
+                stickerSets.Add(temp);
+            }
+
+            return stickerSets;
+        }
     }
-
 
     public class StickerSet
     {
         public string NameHeader { get; set; }
         public string IconHeader { get; set; }
 
-        public IEnumerable<Sticker> Stickers { get; set; } 
-
+        public IEnumerable<Sticker> Stickers { get; set; }
     }
-
 
     public class Sticker
     {
-        public string  Name {get; set; }
+        public string Name { get; set; }
         public string Path { get; set; }
     }
 }

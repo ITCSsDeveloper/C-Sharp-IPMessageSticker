@@ -102,7 +102,7 @@
     <Content Include="Image\Food\doughnut.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Image\Food\fish.png">
+    <Content Include="Stickers\Basic\fish.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Image\Food\tea-cup.png">

@@ -24,9 +24,12 @@ namespace C_Sharp_IPMessageSticker
             screenWidth = Screen.PrimaryScreen.Bounds.Width;
             screenHeight = Screen.PrimaryScreen.Bounds.Height;
 
-            Thread.Sleep(100);
-            this.Hide();
-            backgroundWorker1.RunWorkerAsync();
+
+            cSticker.GetStickers();
+
+            // Thread.Sleep(100);
+            // this.Hide();
+            //backgroundWorker1.RunWorkerAsync();
         }
 
         private void button1_Click(object sender, EventArgs e)
