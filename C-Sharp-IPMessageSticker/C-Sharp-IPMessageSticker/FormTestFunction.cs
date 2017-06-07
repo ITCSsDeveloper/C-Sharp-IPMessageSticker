@@ -27,7 +27,7 @@ namespace C_Sharp_IPMessageSticker
         private void button1_Click(object sender, EventArgs e)
         {
             Image image = cMain.LoadImageFormPath(@"D:\bokeh6.jpg");
-            cMain.AddImage(image);
+            cMain.Clipbroad_AddImage(image);
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)

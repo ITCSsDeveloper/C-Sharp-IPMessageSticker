@@ -7,12 +7,12 @@ namespace C_Sharp_IPMessageSticker
 {
     public class cMain
     {
-        public static void AddImage(Image img)
+        public static void Clipbroad_AddImage(Image img)
         {
             Clipboard.SetImage(img);
         }
 
-        public static Image GetImage(Image img)
+        public static Image Clipbroad_GetImage(Image img)
         {
             Image returnImage = null;
             if (Clipboard.ContainsImage())
