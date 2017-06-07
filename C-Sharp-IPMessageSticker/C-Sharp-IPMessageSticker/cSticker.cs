@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace C_Sharp_IPMessageSticker
 {
@@ -40,6 +42,33 @@ namespace C_Sharp_IPMessageSticker
 
             return stickerSets;
         }
+
+        public static void ImportStickers(string stickerName , string folder)
+        {
+            if (string.IsNullOrWhiteSpace(stickerName))
+                throw new Exception("Sticker Name Invalid.");
+
+            if (!Directory.Exists(folder))
+                throw new Exception("Directory Invalid.");
+
+            if (Directory.Exists(Root + stickerName))
+                throw new Exception("Directory Exists.");
+
+            Directory.CreateDirectory(Root+stickerName);
+
+
+
+            File.Copy("file-a.txt", "file-b.txt", true); // overwrite = true
+        }
+
+
+
+
+
+
+
+
+
     }
 
     public class StickerSet
