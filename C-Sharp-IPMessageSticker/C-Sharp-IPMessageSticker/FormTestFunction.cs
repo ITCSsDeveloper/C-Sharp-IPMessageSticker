@@ -99,5 +99,11 @@ namespace C_Sharp_IPMessageSticker
         {
             cSticker.ImportStickers(txtStickName.Text.Trim(), textBox1.Text.Trim());
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            cSticker.DeleteSticker(textBox2.Text.Trim());
+      
+        }
     }
 }

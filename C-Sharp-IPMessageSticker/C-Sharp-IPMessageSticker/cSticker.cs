@@ -64,6 +64,17 @@ namespace C_Sharp_IPMessageSticker
             }
         }
 
+        public static void DeleteSticker(string stickerName)
+        {
+            if (string.IsNullOrWhiteSpace(stickerName))
+                throw new Exception("Sticker Name Invalid.");
+
+            if (!Directory.Exists(Root + stickerName))
+                throw new Exception("No Sticker Name");
+
+            Directory.Delete(Root + stickerName.Trim(),true);
+        }
+
         private static void CopySticker(string source, string destination)
         {
             var bmp1 = cMain.LoadImageFormPath(source);
