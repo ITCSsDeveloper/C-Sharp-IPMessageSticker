@@ -44,14 +44,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cMain.cs" />
+    <Compile Include="cSticker.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTestFunction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTestFunction.Designer.cs">
+      <DependentUpon>FormTestFunction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormTestFunction.resx">
+      <DependentUpon>FormTestFunction.cs</DependentUpon>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
