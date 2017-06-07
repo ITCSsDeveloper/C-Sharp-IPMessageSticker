@@ -120,6 +120,8 @@
             this.Controls.Add(this.listViewParent);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormHome";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Sticker";
             this.ResumeLayout(false);

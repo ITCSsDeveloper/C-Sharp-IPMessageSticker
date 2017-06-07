@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -15,31 +12,33 @@ namespace C_Sharp_IPMessageSticker
     public partial class FormHome : Form
     {
         private bool isActive = false;
+        private bool isShow = false;
         private bool isHideByUser = false;
-
 
         private int screenWidth;
         private int screenHeight;
         private IEnumerable<StickerSet> AllSticker;
 
 
-        [DllImport("user32.dll")]
-        public static extern void SwitchToThisWindow(IntPtr hWnd, bool turnon);
-
-
         public FormHome()
         {
             InitializeComponent();
+
             screenWidth = Screen.PrimaryScreen.Bounds.Width;
             screenHeight = Screen.PrimaryScreen.Bounds.Height;
             Location = new Point(screenWidth - (Width), screenHeight - (Height + 40));
             AllSticker = cSticker.GetStickers();
+
             GetListItemParent();
             GetListItemChild();
-            Hide();
-            Thread.Sleep(100);
+
             backgroundWorker1.RunWorkerAsync();
         }
+
+        [DllImport("user32.dll")]
+        public static extern void SwitchToThisWindow(IntPtr hWnd, bool turnon);
+
+   
 
         public void GetListItemParent()
         {
@@ -60,9 +59,6 @@ namespace C_Sharp_IPMessageSticker
                 listViewParent.Items.Add(item);
             }
         }
-
-
-
 
         public void GetListItemChild(string stickerSetName = "Basic")
         {
@@ -99,8 +95,6 @@ namespace C_Sharp_IPMessageSticker
             GetListItemChild(key);
         }
 
-
-
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             while (true)
@@ -128,8 +122,8 @@ namespace C_Sharp_IPMessageSticker
                         {
                             if (isActive)
                             {
-                                SetHide();
-                                
+                                this.Hide();
+                                isActive = false;
                             }
                         });
                     }
@@ -137,24 +131,15 @@ namespace C_Sharp_IPMessageSticker
             }
         }
 
-        private void SetHide()
-        {
-            isActive = false;
-            Location = new Point(screenWidth - (20), screenHeight - (Height + 40));
-            listViewParent.Visible = false;
-            listViewChild.Visible = false;
-            Size = new Size(23, 292);
-            btnHideShow.Text = @"<";
-        }
-
         private void SetShow()
         {
-            isActive = true;
             listViewParent.Visible = true;
             listViewChild.Visible = true;
             Size = new Size(334, 292);
             Location = new Point(screenWidth - (Width), screenHeight - (Height + 40));
             btnHideShow.Text = @">";
+            isActive = true;
+            Show();
         }
 
         private void listViewChild_MouseClick(object sender, MouseEventArgs e)
@@ -169,25 +154,36 @@ namespace C_Sharp_IPMessageSticker
                 Thread.Sleep(50);
                 SendKeys.Send("^V");
             }
-
         }
 
         private void linkLabelSetting_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
         }
 
         private void btnHideShow_Click(object sender, EventArgs e)
         {
-            if (isActive)
+            if (isActive == true && isShow == false)
             {
-                
-                SetHide();
+                Location = new Point(screenWidth - (20), screenHeight - (Height + 40));
+                listViewParent.Visible = false;
+                listViewChild.Visible = false;
+                Size = new Size(23, 292);
+                btnHideShow.Text = @"<";
+                isShow = true;
+            }
+            else if (isActive == true && isShow == true)
+            {
+                listViewParent.Visible = true;
+                listViewChild.Visible = true;
+                Size = new Size(334, 292);
+                Location = new Point(screenWidth - (Width), screenHeight - (Height + 40));
+                btnHideShow.Text = @">";
+                isShow = false;
+                Show();
             }
             else
             {
-                SetShow();
-
+                Hide();
             }
         }
     }
