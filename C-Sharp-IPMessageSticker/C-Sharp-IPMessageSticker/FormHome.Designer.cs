@@ -39,12 +39,13 @@
             // listViewChild
             // 
             this.listViewChild.BackColor = System.Drawing.SystemColors.Control;
+            this.listViewChild.Cursor = System.Windows.Forms.Cursors.Hand;
             this.listViewChild.Location = new System.Drawing.Point(3, 43);
             this.listViewChild.Name = "listViewChild";
             this.listViewChild.Size = new System.Drawing.Size(293, 217);
             this.listViewChild.TabIndex = 0;
             this.listViewChild.UseCompatibleStateImageBehavior = false;
-            this.listViewChild.SelectedIndexChanged += new System.EventHandler(this.listViewChild_SelectedIndexChanged);
+            this.listViewChild.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listViewChild_MouseClick);
             // 
             // listViewParent
             // 
@@ -84,9 +85,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(299, 262);
             this.Controls.Add(this.listViewChild);
             this.Controls.Add(this.listViewParent);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormHome";
             this.Text = "Sticker";
             this.ResumeLayout(false);

@@ -28,16 +28,14 @@ namespace C_Sharp_IPMessageSticker
         public FormHome()
         {
             InitializeComponent();
-            screenWidth = Screen.PrimaryScreen.Bounds.Width;
-            screenHeight = Screen.PrimaryScreen.Bounds.Height;
+
             AllSticker = cSticker.GetStickers();
+            GetListItemParent();
+            GetListItemChild();
 
             Thread.Sleep(100);
             this.Hide();
             backgroundWorker1.RunWorkerAsync();
-
-            GetListItemParent();
-            GetListItemChild();
         }
 
         public void GetListItemParent()
@@ -67,19 +65,17 @@ namespace C_Sharp_IPMessageSticker
         {
             imageListChild.Images.Clear();
 
-            var firstOrDefault = AllSticker.FirstOrDefault(x => x.NameHeader == stickerSetName);
-            if (firstOrDefault != null)
-                foreach (var sticker in firstOrDefault.Stickers)
+            foreach (var sticker in AllSticker.FirstOrDefault(x => x.NameHeader == stickerSetName).Stickers)
+            {
+                try
                 {
-                    try
-                    {
-                        imageListChild.Images.Add(Image.FromFile(sticker.Path));
-                    }
-                    catch
-                    {
-                        Console.WriteLine(@"This is not an image file");
-                    }
+                    imageListChild.Images.Add(sticker.Path, Image.FromFile(sticker.Path));
                 }
+                catch
+                {
+                    Console.WriteLine(@"This is not an image file");
+                }
+            }
             listViewChild.View = View.LargeIcon;
             imageListChild.ImageSize = new Size(40, 40);
             listViewChild.LargeImageList = imageListChild;
@@ -88,6 +84,7 @@ namespace C_Sharp_IPMessageSticker
             {
                 ListViewItem item = new ListViewItem();
                 item.ImageIndex = j;
+                item.ImageKey = imageListChild.Images.Keys[j];
                 listViewChild.Items.Add(item);
             }
         }
@@ -97,16 +94,6 @@ namespace C_Sharp_IPMessageSticker
             string key = listViewParent.SelectedItems[0].ImageKey;
 
             GetListItemChild(key);
-        }
-
-        private void listViewChild_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Image image = cMain.LoadImageFormPath(@"D:\f1.gif");
-            cMain.Clipbroad_AddImage(image);
-            SwitchToThisWindow(cMain.GetProcessIPMSG().MainWindowHandle, true);
-
-            Thread.Sleep(50);
-            SendKeys.Send("^V");
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -120,12 +107,14 @@ namespace C_Sharp_IPMessageSticker
                 {
                     if (process.MainWindowTitle.Contains("Send Message"))
                     {
+                        screenWidth = Screen.PrimaryScreen.Bounds.Width;
+                        screenHeight = Screen.PrimaryScreen.Bounds.Height;
                         Invoke((MethodInvoker)delegate
                         {
                             if (!isActive)
                             {
-                                this.Location = new Point(screenWidth - this.Width + 10, screenHeight - (this.Height + 30));
-                                this.Show();
+                                Location = new Point(screenWidth - (Width), screenHeight - (Height + 40));
+                                Show();
                             }
 
                             isActive = true;
@@ -145,6 +134,21 @@ namespace C_Sharp_IPMessageSticker
                     }
                 }
             }
+        }
+
+        private void listViewChild_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (listViewChild.SelectedItems.Count > 0)
+            {
+                string path = listViewChild.SelectedItems[0].ImageKey;
+                Image image = cMain.LoadImageFormPath(path);
+                cMain.Clipbroad_AddImage(image);
+                SwitchToThisWindow(cMain.GetProcessIPMSG().MainWindowHandle, true);
+
+                Thread.Sleep(50);
+                SendKeys.Send("^V");
+            }
+
         }
     }
 }

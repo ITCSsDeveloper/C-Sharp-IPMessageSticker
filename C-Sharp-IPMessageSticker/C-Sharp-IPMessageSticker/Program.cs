@@ -17,7 +17,7 @@ namespace C_Sharp_IPMessageSticker
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
 
-            Application.Run(new FormTestFunction());
+            Application.Run(new FormHome());
 
         }
     }
