@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -15,6 +14,9 @@ namespace C_Sharp_IPMessageSticker
         private int screenWidth;
         private int screenHeight;
 
+        [DllImport("user32.dll")]
+        public static extern void SwitchToThisWindow(IntPtr hWnd, bool turnon);
+
         public FormTestFunction()
         {
             InitializeComponent();
@@ -22,17 +24,18 @@ namespace C_Sharp_IPMessageSticker
             screenWidth = Screen.PrimaryScreen.Bounds.Width;
             screenHeight = Screen.PrimaryScreen.Bounds.Height;
 
+            Thread.Sleep(100);
             this.Hide();
             backgroundWorker1.RunWorkerAsync();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Image image = cMain.LoadImageFormPath(@"D:\bokeh6.jpg");
+            Image image = cMain.LoadImageFormPath(@"D:\f1.gif");
             cMain.Clipbroad_AddImage(image);
             SwitchToThisWindow(cMain.GetProcessIPMSG().MainWindowHandle, true);
 
-            Thread.Sleep(100);
+            Thread.Sleep(50);
             SendKeys.Send("^V");
         }
 
@@ -71,23 +74,6 @@ namespace C_Sharp_IPMessageSticker
                         });
                     }
                 }
-            }
-        }
-
-        [DllImport("user32.dll")]
-        public static extern void SwitchToThisWindow(IntPtr hWnd, bool turnon);
-
-        private String ProcWindow = "itunes";
-        //function which calls switchWindow() is here but not important
-
-        //now we have switch window.
-        private void switchWindow()
-        {
-            Process[] procs = Process.GetProcessesByName(ProcWindow);
-            foreach (Process proc in procs)
-            {
-                //switch to process by name
-                SwitchToThisWindow(proc.MainWindowHandle, false);
             }
         }
     }

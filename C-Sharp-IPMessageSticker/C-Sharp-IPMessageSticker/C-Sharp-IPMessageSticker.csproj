@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="cMain.cs" />
+    <Compile Include="cSticker.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
