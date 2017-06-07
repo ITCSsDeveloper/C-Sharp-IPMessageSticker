@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace C_Sharp_IPMessageSticker
@@ -34,23 +33,25 @@ namespace C_Sharp_IPMessageSticker
             return temp;
         }
 
-
-
-        public static bool CheckProcess()
+        public static Process GetProcessIPMSG()
         {
             try
             {
                 var processList = Process.GetProcesses();
-                if (processList.Any(process => process.ProcessName == "ipmsg"))
-                    return true;
+                foreach (var process in processList)
+                {
+                    if (process.ProcessName == "ipmsg")
+                    {
+                        return process;
+                    }
+                }
             }
             catch
             {
                 // ignored
             }
 
-            return false;
+            return null;
         }
-
     }
 }
