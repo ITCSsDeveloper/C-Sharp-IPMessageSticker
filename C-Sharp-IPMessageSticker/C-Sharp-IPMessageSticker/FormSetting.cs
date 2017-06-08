@@ -80,9 +80,24 @@ namespace C_Sharp_IPMessageSticker
         {
             if (listViewParent.SelectedItems.Count > 0)
             {
-                cSticker.DeleteSticker(listViewParent.SelectedItems[0].ImageKey);
-                AllSticker = cSticker.GetStickers();
-                GetListItemParent();
+                if (listViewParent.SelectedItems[0].ImageKey == @"Basic")
+                {
+                    MessageBox.Show(@"You can't delete basic sticker.",
+              @"Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    DialogResult dialogResult = MessageBox.Show(@"Are you sure that you want to delete this sticker set?",
+              @"Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (dialogResult == DialogResult.OK)
+                    {
+                        cSticker.DeleteSticker(listViewParent.SelectedItems[0].ImageKey);
+                        AllSticker = cSticker.GetStickers();
+                        GetListItemParent();
+                    }
+                }
+
             }
         }
     }
