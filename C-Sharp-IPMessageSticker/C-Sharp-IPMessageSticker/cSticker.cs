@@ -25,17 +25,17 @@ namespace C_Sharp_IPMessageSticker
             {
                 var temp = new StickerSet();
                 var files = new DirectoryInfo(folder + @"/").GetFiles();
-           
+
                 temp.NameHeader = folder.Replace(Root, "").Trim();
-                temp.IconHeader = folder +@"/" + files.FirstOrDefault().Name;
+                temp.IconHeader = folder + @"/" + files.FirstOrDefault().Name;
 
                 var tempStickers = new List<Sticker>();
-                foreach (var file in files.OrderByDescending( x=> x.CreationTime))
+                foreach (var file in files.OrderByDescending(x => x.CreationTime))
                 {
-                    var filePath = folder +@"/"+ file.Name ;
+                    var filePath = folder + @"/" + file.Name;
 
                     var sTemp = new Sticker();
-                    sTemp.Name = file.Name.Replace(@".png","");
+                    sTemp.Name = file.Name.Replace(@".png", "");
                     sTemp.Path = filePath;
                     tempStickers.Add(sTemp);
                 }
@@ -99,7 +99,17 @@ namespace C_Sharp_IPMessageSticker
                 Directory.CreateDirectory(Root + Recent);
 
             string pathTemp = Root + Recent + sticker.Path.Split('/')[2].Trim();
-            File.Copy(sticker.Path, pathTemp, true);
+
+            // ต้องไม่ได้มาจาก Recent ด้วยกัน
+            if (!sticker.Path.Contains("Recent") && !pathTemp.Contains("Recent"))
+                File.Copy(sticker.Path, pathTemp, true);
+
+            // Limit 20 items (ลบอันเก่าสุดออก)
+            var files = new DirectoryInfo(Root + Recent).GetFiles();
+            if (files.Count() > 20)
+            {
+                File.Delete(files.OrderByDescending(x => x.CreationTime).Last().FullName);
+            }
         }
 
         public static void ClearRecent()
