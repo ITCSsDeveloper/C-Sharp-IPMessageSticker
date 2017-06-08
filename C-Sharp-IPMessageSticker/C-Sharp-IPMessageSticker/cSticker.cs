@@ -9,8 +9,8 @@ namespace C_Sharp_IPMessageSticker
 {
     public class cSticker
     {
-        private static string Root = @"Stickers/";
-        private static string Recent = @"Recent/";
+        public static readonly string Root = @"Stickers/";
+        public static readonly string Recent = @"Recent/";
 
         public static IEnumerable<StickerSet> GetStickers()
         {
