@@ -10,6 +10,7 @@ namespace C_Sharp_IPMessageSticker
     public class cSticker
     {
         private static string Root = @"Stickers/";
+        private static string Recent = @"Recent/";
 
         public static IEnumerable<StickerSet> GetStickers()
         {
@@ -87,19 +88,28 @@ namespace C_Sharp_IPMessageSticker
                 throw new Exception("Directory Exists.");
         }
 
-
         public static void AddToRecent(Sticker sticker)
         {
-            if(sticker == null)
+            if (sticker == null)
                 return;
 
-            if (!Directory.Exists(Root + @"Recent/"))
-                Directory.CreateDirectory(Root + @"Recent/");
+            if (!Directory.Exists(Root + Recent))
+                Directory.CreateDirectory(Root + Recent);
 
-
-            File.Copy(sticker.Path, Root + @"Recent/" + sticker.Path.Split('/')[2].Trim(), true); // overwrite = true
+            File.Copy(sticker.Path, Root + Recent + sticker.Path.Split('/')[2].Trim(), true); // overwrite = true
         }
 
+        public static void ClearRecent()
+        {
+            if (!Directory.Exists(Root + Recent))
+            {
+                Directory.CreateDirectory(Root + Recent);
+                return;
+            }
+
+            Directory.Delete(Root + Recent, true);
+            Directory.CreateDirectory(Root + Recent);
+        }
 
         private static void CopySticker(string source, string destination)
         {
@@ -116,8 +126,6 @@ namespace C_Sharp_IPMessageSticker
         {
             return ImageCodecInfo.GetImageDecoders().FirstOrDefault(codec => codec.FormatID == format.Guid);
         }
-
-      
     }
 
     public class StickerSet

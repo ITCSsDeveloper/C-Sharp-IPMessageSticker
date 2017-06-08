@@ -112,5 +112,10 @@ namespace C_Sharp_IPMessageSticker
             var st = cSticker.GetStickers().First(x => x.NameHeader == "Basic");
             cSticker.AddToRecent(st.Stickers.First());
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            cSticker.ClearRecent();
+        }
     }
 }
