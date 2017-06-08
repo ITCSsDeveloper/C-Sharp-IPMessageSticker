@@ -103,13 +103,6 @@ namespace C_Sharp_IPMessageSticker
             }
         }
 
-        private void listViewParent_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string key = listViewParent.SelectedItems[0].ImageKey;
-
-            GetListItemChild(key);
-        }
-
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             while (true)
@@ -160,8 +153,13 @@ namespace C_Sharp_IPMessageSticker
 
         private void linkLabelSetting_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
-
+            using (var form = new FormSetting())
+            {
+                var result = form.ShowDialog();
+                AllSticker = cSticker.GetStickers();
+                GetListItemParent();
+                GetListItemChild();
+            }
         }
 
         private void btnHideShow_Click(object sender, EventArgs e)
