@@ -24,17 +24,19 @@ namespace C_Sharp_IPMessageSticker
             foreach (var folder in folders)
             {
                 var temp = new StickerSet();
-                var files = Directory.GetFiles(folder + @"/", "*.png");
-
+                var files = new DirectoryInfo(folder + @"/").GetFiles();
+           
                 temp.NameHeader = folder.Replace(Root, "").Trim();
-                temp.IconHeader = files.FirstOrDefault();
+                temp.IconHeader = folder +@"/" + files.FirstOrDefault().Name;
 
                 var tempStickers = new List<Sticker>();
-                foreach (var file in files)
+                foreach (var file in files.OrderByDescending( x=> x.CreationTime))
                 {
+                    var filePath = folder +@"/"+ file.Name ;
+
                     var sTemp = new Sticker();
-                    sTemp.Name = file.Replace(Root, "").Replace(temp.NameHeader + @"/", "").Replace(@".png", "").Trim();
-                    sTemp.Path = file.Trim();
+                    sTemp.Name = file.Name.Replace(@".png","");
+                    sTemp.Path = filePath;
                     tempStickers.Add(sTemp);
                 }
 
@@ -95,15 +97,9 @@ namespace C_Sharp_IPMessageSticker
 
             if (!Directory.Exists(Root + Recent))
                 Directory.CreateDirectory(Root + Recent);
-            try
-            {
-                File.Copy(sticker.Path, Root + Recent + sticker.Path.Split('/')[2].Trim(), true); // overwrite = true
-            }
-            catch (Exception)
-            {
-                
-            }
-            
+
+            string pathTemp = Root + Recent + sticker.Path.Split('/')[2].Trim();
+            File.Copy(sticker.Path, pathTemp, true);
         }
 
         public static void ClearRecent()
@@ -125,7 +121,7 @@ namespace C_Sharp_IPMessageSticker
             var myEncoderParameters = new EncoderParameters(1);
             myEncoderParameters.Param[0] = new EncoderParameter(Encoder.Quality, 100);
 
-            bmp1 = (Image)(new Bitmap(bmp1, new Size(64, 64)));
+            bmp1 = (Image)(new Bitmap(bmp1, new Size(96, 96)));
             bmp1.Save(destination, jpgEncoder, myEncoderParameters);
         }
 

@@ -40,11 +40,14 @@
             // 
             // listViewChild
             // 
+            this.listViewChild.Alignment = System.Windows.Forms.ListViewAlignment.SnapToGrid;
             this.listViewChild.BackColor = System.Drawing.SystemColors.Control;
             this.listViewChild.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.listViewChild.GridLines = true;
             this.listViewChild.Location = new System.Drawing.Point(29, 69);
             this.listViewChild.Name = "listViewChild";
             this.listViewChild.Size = new System.Drawing.Size(300, 220);
+            this.listViewChild.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listViewChild.TabIndex = 0;
             this.listViewChild.UseCompatibleStateImageBehavior = false;
             this.listViewChild.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listViewChild_MouseClick);
@@ -61,7 +64,6 @@
             this.listViewParent.Name = "listViewParent";
             this.listViewParent.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.listViewParent.Scrollable = false;
-            this.listViewParent.ShowGroups = false;
             this.listViewParent.Size = new System.Drawing.Size(300, 40);
             this.listViewParent.TabIndex = 0;
             this.listViewParent.UseCompatibleStateImageBehavior = false;
@@ -124,6 +126,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Sticker";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 
