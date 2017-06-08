@@ -139,5 +139,14 @@ namespace C_Sharp_IPMessageSticker
             this.WindowState = FormWindowState.Normal;
             notifyIcon.Visible = false;
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show(@"You want to close the program ?", @"Confirm ?", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.OK)
+            {
+                Application.Exit();
+            }
+        }
     }
 }
