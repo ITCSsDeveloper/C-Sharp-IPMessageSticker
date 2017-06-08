@@ -87,6 +87,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="favicon.ico" />
+    <Content Include="icon.png" />
     <Content Include="Image\Food\can %281%29.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
