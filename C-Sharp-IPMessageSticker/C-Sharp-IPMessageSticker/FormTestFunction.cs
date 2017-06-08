@@ -117,5 +117,27 @@ namespace C_Sharp_IPMessageSticker
         {
             cSticker.ClearRecent();
         }
+
+        private void FormTestFunction_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason != CloseReason.ApplicationExitCall)
+            {
+                e.Cancel = true;
+                this.WindowState = FormWindowState.Minimized;
+                if (this.WindowState == FormWindowState.Minimized)
+                {
+                    Hide();
+                    notifyIcon.Visible = true;
+                    notifyIcon.ShowBalloonTip(500);
+                }
+            }
+        }
+
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+            notifyIcon.Visible = false;
+        }
     }
 }
