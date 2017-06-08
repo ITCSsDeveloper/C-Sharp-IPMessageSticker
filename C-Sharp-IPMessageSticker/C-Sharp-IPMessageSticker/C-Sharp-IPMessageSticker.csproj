@@ -49,6 +49,12 @@
   <ItemGroup>
     <Compile Include="cMain.cs" />
     <Compile Include="cSticker.cs" />
+    <Compile Include="FormPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPreview.Designer.cs">
+      <DependentUpon>FormPreview.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormPreview.resx">
+      <DependentUpon>FormPreview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormSetting.resx">
       <DependentUpon>FormSetting.cs</DependentUpon>
     </EmbeddedResource>

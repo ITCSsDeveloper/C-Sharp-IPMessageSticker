@@ -50,7 +50,9 @@
             this.listViewChild.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listViewChild.TabIndex = 0;
             this.listViewChild.UseCompatibleStateImageBehavior = false;
+            this.listViewChild.ItemMouseHover += new System.Windows.Forms.ListViewItemMouseHoverEventHandler(this.listViewChild_ItemMouseHover);
             this.listViewChild.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listViewChild_MouseClick);
+            this.listViewChild.MouseLeave += new System.EventHandler(this.listViewChild_MouseLeave);
             // 
             // listViewParent
             // 
@@ -126,7 +128,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Sticker";
-            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

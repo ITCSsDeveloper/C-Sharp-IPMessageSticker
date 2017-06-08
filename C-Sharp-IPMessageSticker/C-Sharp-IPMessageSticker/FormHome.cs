@@ -20,11 +20,11 @@ namespace C_Sharp_IPMessageSticker
         private string Recent = @"Recent/";
 
         private string _last = "Recent";
-
+        private FormPreview formPreview = null;
 
         private int screenWidth;
         private int screenHeight;
-        
+
         private IEnumerable<StickerSet> AllSticker;
 
 
@@ -32,9 +32,14 @@ namespace C_Sharp_IPMessageSticker
         {
             InitializeComponent();
 
+
+            
+
             screenWidth = Screen.PrimaryScreen.Bounds.Width;
             screenHeight = Screen.PrimaryScreen.Bounds.Height;
             Location = new Point(screenWidth - (Width), screenHeight - (Height + 40));
+            formPreview = new FormPreview(new Point(screenWidth - 128, screenHeight - (Height + 40) - 128));
+            formPreview.Hide();
             AllSticker = cSticker.GetStickers();
 
             GetListItemParent();
@@ -122,6 +127,7 @@ namespace C_Sharp_IPMessageSticker
                             if (!isActive)
                             {
                                 SetShow();
+                                TopMost = true;
                             }
                         });
                     }
@@ -133,6 +139,7 @@ namespace C_Sharp_IPMessageSticker
                             {
                                 this.Hide();
                                 isActive = false;
+                                TopMost = false;
                             }
                         });
                     }
@@ -228,5 +235,17 @@ namespace C_Sharp_IPMessageSticker
             }
         }
 
+        private void listViewChild_ItemMouseHover(object sender, ListViewItemMouseHoverEventArgs e)
+        {
+            string path = e.Item.ImageKey;
+
+            formPreview.PathImage = path;
+            formPreview.Show();
+        }
+
+        private void listViewChild_MouseLeave(object sender, EventArgs e)
+        {
+            formPreview.Hide();
+        }
     }
 }
