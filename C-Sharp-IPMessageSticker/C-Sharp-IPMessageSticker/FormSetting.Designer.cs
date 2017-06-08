@@ -49,6 +49,7 @@
             this.imageListParent = new System.Windows.Forms.ImageList(this.components);
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.Manage.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -56,16 +57,16 @@
             // 
             // txtStickerSetName
             // 
-            this.txtStickerSetName.Location = new System.Drawing.Point(111, 282);
+            this.txtStickerSetName.Location = new System.Drawing.Point(57, 246);
             this.txtStickerSetName.Name = "txtStickerSetName";
             this.txtStickerSetName.Size = new System.Drawing.Size(182, 20);
             this.txtStickerSetName.TabIndex = 8;
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(299, 250);
+            this.btnImport.Location = new System.Drawing.Point(14, 314);
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(75, 78);
+            this.btnImport.Size = new System.Drawing.Size(225, 27);
             this.btnImport.TabIndex = 7;
             this.btnImport.Text = "Import";
             this.btnImport.UseVisualStyleBackColor = true;
@@ -73,7 +74,7 @@
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(218, 305);
+            this.btnBrowse.Location = new System.Drawing.Point(164, 267);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(75, 23);
             this.btnBrowse.TabIndex = 6;
@@ -83,7 +84,7 @@
             // 
             // txtBrowse
             // 
-            this.txtBrowse.Location = new System.Drawing.Point(111, 308);
+            this.txtBrowse.Location = new System.Drawing.Point(57, 269);
             this.txtBrowse.Name = "txtBrowse";
             this.txtBrowse.ReadOnly = true;
             this.txtBrowse.Size = new System.Drawing.Size(101, 20);
@@ -93,7 +94,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label1.Location = new System.Drawing.Point(71, 282);
+            this.label1.Location = new System.Drawing.Point(16, 249);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 9;
@@ -103,7 +104,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label2.Location = new System.Drawing.Point(66, 308);
+            this.label2.Location = new System.Drawing.Point(11, 272);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 9;
@@ -113,7 +114,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label3.Location = new System.Drawing.Point(107, 249);
+            this.label3.Location = new System.Drawing.Point(6, 222);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(147, 20);
             this.label3.TabIndex = 9;
@@ -126,11 +127,12 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(611, 374);
+            this.tabControl1.Size = new System.Drawing.Size(356, 374);
             this.tabControl1.TabIndex = 10;
             // 
             // Manage
             // 
+            this.Manage.Controls.Add(this.label4);
             this.Manage.Controls.Add(this.panel3);
             this.Manage.Controls.Add(this.btnClearRecent);
             this.Manage.Controls.Add(this.panel2);
@@ -144,7 +146,7 @@
             this.Manage.Location = new System.Drawing.Point(4, 22);
             this.Manage.Name = "Manage";
             this.Manage.Padding = new System.Windows.Forms.Padding(3);
-            this.Manage.Size = new System.Drawing.Size(603, 348);
+            this.Manage.Size = new System.Drawing.Size(348, 348);
             this.Manage.TabIndex = 0;
             this.Manage.Text = "Manage";
             this.Manage.UseVisualStyleBackColor = true;
@@ -152,16 +154,16 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.DarkGray;
-            this.panel3.Location = new System.Drawing.Point(417, 239);
+            this.panel3.Location = new System.Drawing.Point(247, 241);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1, 100);
             this.panel3.TabIndex = 1015;
             // 
             // btnClearRecent
             // 
-            this.btnClearRecent.Location = new System.Drawing.Point(453, 249);
+            this.btnClearRecent.Location = new System.Drawing.Point(254, 255);
             this.btnClearRecent.Name = "btnClearRecent";
-            this.btnClearRecent.Size = new System.Drawing.Size(123, 78);
+            this.btnClearRecent.Size = new System.Drawing.Size(84, 26);
             this.btnClearRecent.TabIndex = 1013;
             this.btnClearRecent.Text = "ClearRecent";
             this.btnClearRecent.UseVisualStyleBackColor = true;
@@ -173,7 +175,7 @@
             this.panel2.Controls.Add(this.btnDelete);
             this.panel2.Location = new System.Drawing.Point(7, 7);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(590, 212);
+            this.panel2.Size = new System.Drawing.Size(331, 212);
             this.panel2.TabIndex = 1012;
             // 
             // listViewParent
@@ -189,13 +191,13 @@
             this.listViewParent.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.listViewParent.Scrollable = false;
             this.listViewParent.ShowGroups = false;
-            this.listViewParent.Size = new System.Drawing.Size(568, 163);
+            this.listViewParent.Size = new System.Drawing.Size(316, 168);
             this.listViewParent.TabIndex = 1;
             this.listViewParent.UseCompatibleStateImageBehavior = false;
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(505, 179);
+            this.btnDelete.Location = new System.Drawing.Point(253, 181);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 25);
             this.btnDelete.TabIndex = 7;
@@ -233,12 +235,24 @@
             this.notifyIcon.Text = "IPMessage Sticker";
             this.notifyIcon.Visible = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(63, 291);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(167, 13);
+            this.label4.TabIndex = 1016;
+            this.label4.Text = "Your images should have ratio 1:1";
+            // 
             // FormSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(635, 398);
+            this.ClientSize = new System.Drawing.Size(372, 398);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FormSetting";
             this.Text = "Setting";
             this.tabControl1.ResumeLayout(false);
@@ -270,5 +284,6 @@
         private System.Windows.Forms.ImageList imageListParent;
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Label label4;
     }
 }

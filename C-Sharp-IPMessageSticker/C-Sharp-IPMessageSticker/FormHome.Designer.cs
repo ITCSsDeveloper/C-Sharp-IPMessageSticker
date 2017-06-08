@@ -36,6 +36,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnHideShow = new System.Windows.Forms.Button();
             this.linkLabelSetting = new System.Windows.Forms.LinkLabel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // listViewChild
@@ -103,13 +104,28 @@
             this.linkLabelSetting.AutoSize = true;
             this.linkLabelSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.linkLabelSetting.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.linkLabelSetting.Location = new System.Drawing.Point(274, 7);
+            this.linkLabelSetting.Location = new System.Drawing.Point(257, 6);
             this.linkLabelSetting.Name = "linkLabelSetting";
             this.linkLabelSetting.Size = new System.Drawing.Size(52, 17);
             this.linkLabelSetting.TabIndex = 3;
             this.linkLabelSetting.TabStop = true;
             this.linkLabelSetting.Text = "Setting";
             this.linkLabelSetting.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelSetting_LinkClicked);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.SandyBrown;
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.linkLabel1.LinkColor = System.Drawing.Color.Red;
+            this.linkLabel1.Location = new System.Drawing.Point(315, 6);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(17, 17);
+            this.linkLabel1.TabIndex = 4;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "X";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // FormHome
             // 
@@ -118,6 +134,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(334, 292);
             this.ControlBox = false;
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.linkLabelSetting);
             this.Controls.Add(this.btnHideShow);
             this.Controls.Add(this.listViewChild);
@@ -142,6 +159,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btnHideShow;
         private System.Windows.Forms.LinkLabel linkLabelSetting;
+        private System.Windows.Forms.LinkLabel linkLabel1;
 
     }
 }

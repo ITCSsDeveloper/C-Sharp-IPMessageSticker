@@ -247,5 +247,14 @@ namespace C_Sharp_IPMessageSticker
         {
             formPreview.Hide();
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show(@"You want to close the program ?", @"Confirm ?", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.OK)
+            {
+                Application.Exit();
+            }
+        }
     }
 }

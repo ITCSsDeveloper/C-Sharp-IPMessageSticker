@@ -64,7 +64,7 @@ namespace C_Sharp_IPMessageSticker
 
             listViewParent.Clear();
             listViewParent.View = View.LargeIcon;
-            imageListParent.ImageSize = new Size(25, 25);
+            imageListParent.ImageSize = new Size(40, 40);
             listViewParent.LargeImageList = imageListParent;
 
             for (int j = 0; j < imageListParent.Images.Count; j++)

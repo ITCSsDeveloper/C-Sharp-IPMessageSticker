@@ -117,24 +117,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Image\Food\can %281%29.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Image\Food\can.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Image\Food\cheese.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Image\Food\cocktail.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Image\Food\doughnut.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Image\Recent.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Resource\BB Love Story by happyme24hrs\BBLove %281%29.gif" />
     <Content Include="Resource\BB Love Story by happyme24hrs\BBLove %2810%29.gif" />
     <Content Include="Resource\BB Love Story by happyme24hrs\BBLove %2811%29.gif" />
@@ -182,16 +164,7 @@
     <Content Include="Resource\favicon.ico" />
     <Content Include="Resource\icon.bmp" />
     <Content Include="Resource\icon.png" />
-    <Content Include="Image\Food\tea-cup.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Image\Person\1.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Image\Report\2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Image\Stats\3.png">
+    <Content Include="Resource\Recent.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Stickers\Basic\BBLove %281%29.png">
