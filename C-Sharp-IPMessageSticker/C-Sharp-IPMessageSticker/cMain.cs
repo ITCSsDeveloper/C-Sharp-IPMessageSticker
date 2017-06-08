@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-
 namespace C_Sharp_IPMessageSticker
 {
     public class cMain
@@ -53,5 +52,6 @@ namespace C_Sharp_IPMessageSticker
 
             return null;
         }
+
     }
 }
