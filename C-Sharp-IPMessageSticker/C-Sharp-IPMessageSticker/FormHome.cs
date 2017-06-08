@@ -50,6 +50,8 @@ namespace C_Sharp_IPMessageSticker
 
         public void GetListItemParent()
         {
+            imageListParent.Images.Clear();
+            imageListParent.ImageSize = new Size(24, 24);
             imageListParent.Images.Add("Recent", Image.FromFile(@"Image\Recent.png"));
 
             foreach (var stickerSet in AllSticker)
@@ -60,10 +62,9 @@ namespace C_Sharp_IPMessageSticker
                 }
             }
 
+            listViewParent.Clear();
             listViewParent.View = View.LargeIcon;
-            imageListParent.ImageSize = new Size(25, 25);
             listViewParent.LargeImageList = imageListParent;
-
             for (int j = 0; j < imageListParent.Images.Count; j++)
             {
                 ListViewItem item = new ListViewItem();
@@ -199,6 +200,11 @@ namespace C_Sharp_IPMessageSticker
             {
                 string key = listViewParent.SelectedItems[0].ImageKey;
                 _last = key;
+
+                if (key == "Recent")
+                {
+                    AllSticker = cSticker.GetStickers();
+                }
 
                 GetListItemChild(key);
             }
