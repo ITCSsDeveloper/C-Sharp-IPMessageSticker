@@ -19,6 +19,9 @@ namespace C_Sharp_IPMessageSticker
         [DllImport("user32.dll")]
         public static extern void SwitchToThisWindow(IntPtr hWnd, bool turnon);
 
+
+        private string PathPreviewImage = "";
+
         public FormTestFunction()
         {
             InitializeComponent();
@@ -29,6 +32,9 @@ namespace C_Sharp_IPMessageSticker
 
             cSticker.GetStickers();
 
+
+            fPreview = new TestPreview();
+           fPreview.Show();
             // Thread.Sleep(100);
             // this.Hide();
             //backgroundWorker1.RunWorkerAsync();
@@ -147,6 +153,13 @@ namespace C_Sharp_IPMessageSticker
             {
                 Application.Exit();
             }
+        }
+
+
+        public TestPreview fPreview { get; set; }
+        private void button8_Click(object sender, EventArgs e)
+        {
+            fPreview.PathImage = @"D:\bokeh6.jpg";
         }
     }
 }

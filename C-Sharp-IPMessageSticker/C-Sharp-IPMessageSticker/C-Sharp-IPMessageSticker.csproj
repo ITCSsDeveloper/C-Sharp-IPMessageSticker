@@ -78,6 +78,12 @@
     <EmbeddedResource Include="FormPreview.resx">
       <DependentUpon>FormPreview.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="TestPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestPreview.Designer.cs">
+      <DependentUpon>TestPreview.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormSetting.resx">
       <DependentUpon>FormSetting.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,6 +102,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TestPreview.resx">
+      <DependentUpon>TestPreview.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
