@@ -42,7 +42,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnClearRecent = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.listViewChild = new System.Windows.Forms.ListView();
             this.listViewParent = new System.Windows.Forms.ListView();
             this.btnDelete = new System.Windows.Forms.Button();
             this.About = new System.Windows.Forms.TabPage();
@@ -147,7 +146,7 @@
             this.Manage.Padding = new System.Windows.Forms.Padding(3);
             this.Manage.Size = new System.Drawing.Size(603, 348);
             this.Manage.TabIndex = 0;
-            this.Manage.Text = "Mange";
+            this.Manage.Text = "Manage";
             this.Manage.UseVisualStyleBackColor = true;
             // 
             // panel3
@@ -170,23 +169,12 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.listViewChild);
             this.panel2.Controls.Add(this.listViewParent);
             this.panel2.Controls.Add(this.btnDelete);
             this.panel2.Location = new System.Drawing.Point(7, 7);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(590, 221);
+            this.panel2.Size = new System.Drawing.Size(590, 212);
             this.panel2.TabIndex = 1012;
-            // 
-            // listViewChild
-            // 
-            this.listViewChild.BackColor = System.Drawing.SystemColors.Control;
-            this.listViewChild.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.listViewChild.Location = new System.Drawing.Point(12, 56);
-            this.listViewChild.Name = "listViewChild";
-            this.listViewChild.Size = new System.Drawing.Size(568, 132);
-            this.listViewChild.TabIndex = 2;
-            this.listViewChild.UseCompatibleStateImageBehavior = false;
             // 
             // listViewParent
             // 
@@ -201,18 +189,19 @@
             this.listViewParent.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.listViewParent.Scrollable = false;
             this.listViewParent.ShowGroups = false;
-            this.listViewParent.Size = new System.Drawing.Size(568, 40);
+            this.listViewParent.Size = new System.Drawing.Size(568, 163);
             this.listViewParent.TabIndex = 1;
             this.listViewParent.UseCompatibleStateImageBehavior = false;
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(505, 191);
+            this.btnDelete.Location = new System.Drawing.Point(505, 179);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 25);
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // About
             // 
@@ -275,7 +264,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnClearRecent;
         private System.Windows.Forms.ListView listViewParent;
-        private System.Windows.Forms.ListView listViewChild;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ImageList imageListChild;
