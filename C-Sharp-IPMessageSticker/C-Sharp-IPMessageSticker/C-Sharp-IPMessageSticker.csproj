@@ -85,9 +85,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Stickers\Recent\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Image\Food\can %281%29.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -104,6 +102,9 @@
     <Content Include="Image\Food\doughnut.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Image\Recent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Stickers\Basic\fish.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -117,6 +118,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Image\Stats\3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Stickers\Recent\3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

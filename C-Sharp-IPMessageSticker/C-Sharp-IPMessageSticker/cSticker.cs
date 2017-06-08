@@ -95,8 +95,15 @@ namespace C_Sharp_IPMessageSticker
 
             if (!Directory.Exists(Root + Recent))
                 Directory.CreateDirectory(Root + Recent);
-
-            File.Copy(sticker.Path, Root + Recent + sticker.Path.Split('/')[2].Trim(), true); // overwrite = true
+            try
+            {
+                File.Copy(sticker.Path, Root + Recent + sticker.Path.Split('/')[2].Trim(), true); // overwrite = true
+            }
+            catch (Exception)
+            {
+                
+            }
+            
         }
 
         public static void ClearRecent()

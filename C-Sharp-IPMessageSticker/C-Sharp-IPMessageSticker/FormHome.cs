@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -14,6 +15,12 @@ namespace C_Sharp_IPMessageSticker
         private bool isActive = false;
         private bool isShow = false;
         private bool isHideByUser = false;
+
+        private string Root = @"Stickers/";
+        private string Recent = @"Recent/";
+
+        private string _last = "Recent";
+
 
         private int screenWidth;
         private int screenHeight;
@@ -30,7 +37,7 @@ namespace C_Sharp_IPMessageSticker
             AllSticker = cSticker.GetStickers();
 
             GetListItemParent();
-            GetListItemChild();
+            GetListItemChild("Recent");
 
             backgroundWorker1.RunWorkerAsync();
         }
@@ -38,13 +45,18 @@ namespace C_Sharp_IPMessageSticker
         [DllImport("user32.dll")]
         public static extern void SwitchToThisWindow(IntPtr hWnd, bool turnon);
 
-   
+
 
         public void GetListItemParent()
         {
+            imageListParent.Images.Add("Recent", Image.FromFile(@"Image\Recent.png"));
+
             foreach (var stickerSet in AllSticker)
             {
-                imageListParent.Images.Add(stickerSet.NameHeader, Image.FromFile(stickerSet.IconHeader));
+                if (stickerSet.NameHeader != "Recent")
+                {
+                    imageListParent.Images.Add(stickerSet.NameHeader, Image.FromFile(stickerSet.IconHeader));
+                }
             }
 
             listViewParent.View = View.LargeIcon;
@@ -75,6 +87,8 @@ namespace C_Sharp_IPMessageSticker
                     Console.WriteLine(@"This is not an image file");
                 }
             }
+
+
             listViewChild.View = View.LargeIcon;
             imageListChild.ImageSize = new Size(40, 40);
             listViewChild.LargeImageList = imageListChild;
@@ -142,19 +156,6 @@ namespace C_Sharp_IPMessageSticker
             Show();
         }
 
-        private void listViewChild_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (listViewChild.SelectedItems.Count > 0)
-            {
-                string path = listViewChild.SelectedItems[0].ImageKey;
-                Image image = cMain.LoadImageFormPath(path);
-                cMain.Clipbroad_AddImage(image);
-                SwitchToThisWindow(cMain.GetProcessIPMSG().MainWindowHandle, true);
-
-                Thread.Sleep(50);
-                SendKeys.Send("^V");
-            }
-        }
 
         private void linkLabelSetting_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -186,5 +187,39 @@ namespace C_Sharp_IPMessageSticker
                 Hide();
             }
         }
+
+
+
+        private void listViewParent_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (listViewParent.SelectedItems.Count > 0)
+            {
+                string key = listViewParent.SelectedItems[0].ImageKey;
+                _last = key;
+
+                GetListItemChild(key);
+            }
+        }
+
+        private void listViewChild_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (listViewChild.SelectedItems.Count > 0)
+            {
+                string path = listViewChild.SelectedItems[0].ImageKey;
+                Image image = cMain.LoadImageFormPath(path);
+                cMain.Clipbroad_AddImage(image);
+                SwitchToThisWindow(cMain.GetProcessIPMSG().MainWindowHandle, true);
+
+                Thread.Sleep(50);
+                SendKeys.Send("^V");
+                var firstOrDefault = AllSticker.FirstOrDefault(x => x.NameHeader == _last);
+                if (firstOrDefault != null)
+                {
+                    Sticker item = firstOrDefault.Stickers.FirstOrDefault(y => y.Path == path);
+                    cSticker.AddToRecent(item);
+                }
+            }
+        }
+
     }
 }

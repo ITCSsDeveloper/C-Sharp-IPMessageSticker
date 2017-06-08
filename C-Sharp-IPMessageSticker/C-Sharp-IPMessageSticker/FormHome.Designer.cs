@@ -65,7 +65,7 @@
             this.listViewParent.Size = new System.Drawing.Size(300, 40);
             this.listViewParent.TabIndex = 0;
             this.listViewParent.UseCompatibleStateImageBehavior = false;
-            this.listViewParent.SelectedIndexChanged += new System.EventHandler(this.listViewParent_SelectedIndexChanged);
+            this.listViewParent.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listViewParent_MouseClick);
             // 
             // imageListChild
             // 
