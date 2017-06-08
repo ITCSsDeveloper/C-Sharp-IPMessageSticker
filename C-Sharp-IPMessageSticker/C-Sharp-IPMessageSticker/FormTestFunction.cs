@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -104,6 +105,12 @@ namespace C_Sharp_IPMessageSticker
         {
             cSticker.DeleteSticker(textBox2.Text.Trim());
       
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var st = cSticker.GetStickers().First(x => x.NameHeader == "Basic");
+            cSticker.AddToRecent(st.Stickers.First());
         }
     }
 }

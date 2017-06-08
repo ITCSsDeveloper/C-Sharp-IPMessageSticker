@@ -85,7 +85,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Stickers\Recent\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Image\Food\can %281%29.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

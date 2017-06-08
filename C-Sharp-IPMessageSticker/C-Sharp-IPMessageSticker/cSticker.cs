@@ -72,8 +72,7 @@ namespace C_Sharp_IPMessageSticker
             if (!Directory.Exists(Root + stickerName))
                 throw new Exception("No Sticker Name");
 
-
-            Directory.Delete(Root + stickerName.Trim(),true);
+            Directory.Delete(Root + stickerName.Trim(), true);
         }
 
         public static void RenameSticker(string stickerName, string newName)
@@ -86,13 +85,20 @@ namespace C_Sharp_IPMessageSticker
 
             if (Directory.Exists(Root + newName))
                 throw new Exception("Directory Exists.");
-
-
-
-
-
         }
 
+
+        public static void AddToRecent(Sticker sticker)
+        {
+            if(sticker == null)
+                return;
+
+            if (!Directory.Exists(Root + @"Recent/"))
+                Directory.CreateDirectory(Root + @"Recent/");
+
+
+            File.Copy(sticker.Path, Root + @"Recent/" + sticker.Path.Split('/')[2].Trim(), true); // overwrite = true
+        }
 
 
         private static void CopySticker(string source, string destination)
@@ -110,6 +116,8 @@ namespace C_Sharp_IPMessageSticker
         {
             return ImageCodecInfo.GetImageDecoders().FirstOrDefault(codec => codec.FormatID == format.Guid);
         }
+
+      
     }
 
     public class StickerSet
