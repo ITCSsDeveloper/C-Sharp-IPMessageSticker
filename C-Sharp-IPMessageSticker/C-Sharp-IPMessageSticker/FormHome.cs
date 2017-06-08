@@ -57,7 +57,7 @@ namespace C_Sharp_IPMessageSticker
         {
             imageListParent.Images.Clear();
             imageListParent.ImageSize = new Size(24, 24);
-            imageListParent.Images.Add("Recent", Image.FromFile(@"Image\Recent.png"));
+            imageListParent.Images.Add("Recent", Image.FromFile(@"Resource\Recent.png"));
 
             foreach (var stickerSet in AllSticker)
             {
