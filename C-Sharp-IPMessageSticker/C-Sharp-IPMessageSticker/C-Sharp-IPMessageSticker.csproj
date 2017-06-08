@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resource\favicon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -87,8 +90,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="favicon.ico" />
-    <Content Include="icon.png" />
     <Content Include="Image\Food\can %281%29.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -107,6 +108,9 @@
     <Content Include="Image\Recent.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resource\favicon.ico" />
+    <Content Include="Resource\icon.bmp" />
+    <Content Include="Resource\icon.png" />
     <Content Include="Stickers\Basic\fish.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

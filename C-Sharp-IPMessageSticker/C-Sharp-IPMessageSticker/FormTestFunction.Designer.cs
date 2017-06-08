@@ -132,7 +132,6 @@
             // 
             // notifyIcon
             // 
-            this.notifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.notifyIcon.BalloonTipText = "Program is running in backgroud.";
             this.notifyIcon.BalloonTipTitle = "IPMessage Sticker";
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
@@ -154,6 +153,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormTestFunction";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FormTestFunction";
