@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.txtStickName = new System.Windows.Forms.TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSetting));
+            this.txtStickerSetName = new System.Windows.Forms.TextBox();
             this.btnImport = new System.Windows.Forms.Button();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.txtBrowse = new System.Windows.Forms.TextBox();
@@ -38,26 +39,28 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Manage = new System.Windows.Forms.TabPage();
-            this.About = new System.Windows.Forms.TabPage();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnClearRecent = new System.Windows.Forms.Button();
-            this.listViewParent = new System.Windows.Forms.ListView();
-            this.listViewChild = new System.Windows.Forms.ListView();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnClearRecent = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.listViewChild = new System.Windows.Forms.ListView();
+            this.listViewParent = new System.Windows.Forms.ListView();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.About = new System.Windows.Forms.TabPage();
             this.imageListChild = new System.Windows.Forms.ImageList(this.components);
             this.imageListParent = new System.Windows.Forms.ImageList(this.components);
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.tabControl1.SuspendLayout();
             this.Manage.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtStickName
+            // txtStickerSetName
             // 
-            this.txtStickName.Location = new System.Drawing.Point(111, 282);
-            this.txtStickName.Name = "txtStickName";
-            this.txtStickName.Size = new System.Drawing.Size(182, 20);
-            this.txtStickName.TabIndex = 8;
+            this.txtStickerSetName.Location = new System.Drawing.Point(111, 282);
+            this.txtStickerSetName.Name = "txtStickerSetName";
+            this.txtStickerSetName.Size = new System.Drawing.Size(182, 20);
+            this.txtStickerSetName.TabIndex = 8;
             // 
             // btnImport
             // 
@@ -67,6 +70,7 @@
             this.btnImport.TabIndex = 7;
             this.btnImport.Text = "Import";
             this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // btnBrowse
             // 
@@ -76,6 +80,7 @@
             this.btnBrowse.TabIndex = 6;
             this.btnBrowse.Text = "Browse";
             this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // txtBrowse
             // 
@@ -136,7 +141,7 @@
             this.Manage.Controls.Add(this.label3);
             this.Manage.Controls.Add(this.btnImport);
             this.Manage.Controls.Add(this.label1);
-            this.Manage.Controls.Add(this.txtStickName);
+            this.Manage.Controls.Add(this.txtStickerSetName);
             this.Manage.Location = new System.Drawing.Point(4, 22);
             this.Manage.Name = "Manage";
             this.Manage.Padding = new System.Windows.Forms.Padding(3);
@@ -145,15 +150,23 @@
             this.Manage.Text = "Mange";
             this.Manage.UseVisualStyleBackColor = true;
             // 
-            // About
+            // panel3
             // 
-            this.About.Location = new System.Drawing.Point(4, 22);
-            this.About.Name = "About";
-            this.About.Padding = new System.Windows.Forms.Padding(3);
-            this.About.Size = new System.Drawing.Size(603, 348);
-            this.About.TabIndex = 1;
-            this.About.Text = "About";
-            this.About.UseVisualStyleBackColor = true;
+            this.panel3.BackColor = System.Drawing.Color.DarkGray;
+            this.panel3.Location = new System.Drawing.Point(417, 239);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1, 100);
+            this.panel3.TabIndex = 1015;
+            // 
+            // btnClearRecent
+            // 
+            this.btnClearRecent.Location = new System.Drawing.Point(453, 249);
+            this.btnClearRecent.Name = "btnClearRecent";
+            this.btnClearRecent.Size = new System.Drawing.Size(123, 78);
+            this.btnClearRecent.TabIndex = 1013;
+            this.btnClearRecent.Text = "ClearRecent";
+            this.btnClearRecent.UseVisualStyleBackColor = true;
+            this.btnClearRecent.Click += new System.EventHandler(this.btnClearRecent_Click);
             // 
             // panel2
             // 
@@ -165,14 +178,15 @@
             this.panel2.Size = new System.Drawing.Size(590, 221);
             this.panel2.TabIndex = 1012;
             // 
-            // btnClearRecent
+            // listViewChild
             // 
-            this.btnClearRecent.Location = new System.Drawing.Point(453, 249);
-            this.btnClearRecent.Name = "btnClearRecent";
-            this.btnClearRecent.Size = new System.Drawing.Size(123, 78);
-            this.btnClearRecent.TabIndex = 1013;
-            this.btnClearRecent.Text = "ClearRecent";
-            this.btnClearRecent.UseVisualStyleBackColor = true;
+            this.listViewChild.BackColor = System.Drawing.SystemColors.Control;
+            this.listViewChild.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.listViewChild.Location = new System.Drawing.Point(12, 56);
+            this.listViewChild.Name = "listViewChild";
+            this.listViewChild.Size = new System.Drawing.Size(568, 132);
+            this.listViewChild.TabIndex = 2;
+            this.listViewChild.UseCompatibleStateImageBehavior = false;
             // 
             // listViewParent
             // 
@@ -191,16 +205,6 @@
             this.listViewParent.TabIndex = 1;
             this.listViewParent.UseCompatibleStateImageBehavior = false;
             // 
-            // listViewChild
-            // 
-            this.listViewChild.BackColor = System.Drawing.SystemColors.Control;
-            this.listViewChild.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.listViewChild.Location = new System.Drawing.Point(12, 56);
-            this.listViewChild.Name = "listViewChild";
-            this.listViewChild.Size = new System.Drawing.Size(568, 132);
-            this.listViewChild.TabIndex = 2;
-            this.listViewChild.UseCompatibleStateImageBehavior = false;
-            // 
             // btnDelete
             // 
             this.btnDelete.Location = new System.Drawing.Point(505, 191);
@@ -210,13 +214,15 @@
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
-            // panel3
+            // About
             // 
-            this.panel3.BackColor = System.Drawing.Color.DarkGray;
-            this.panel3.Location = new System.Drawing.Point(417, 239);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1, 100);
-            this.panel3.TabIndex = 1015;
+            this.About.Location = new System.Drawing.Point(4, 22);
+            this.About.Name = "About";
+            this.About.Padding = new System.Windows.Forms.Padding(3);
+            this.About.Size = new System.Drawing.Size(603, 348);
+            this.About.TabIndex = 1;
+            this.About.Text = "About";
+            this.About.UseVisualStyleBackColor = true;
             // 
             // imageListChild
             // 
@@ -229,6 +235,14 @@
             this.imageListParent.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
             this.imageListParent.ImageSize = new System.Drawing.Size(16, 16);
             this.imageListParent.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // notifyIcon
+            // 
+            this.notifyIcon.BalloonTipText = "Program is running in backgroud.";
+            this.notifyIcon.BalloonTipTitle = "IPMessage Sticker";
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "IPMessage Sticker";
+            this.notifyIcon.Visible = true;
             // 
             // FormSetting
             // 
@@ -248,7 +262,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtStickName;
+        private System.Windows.Forms.TextBox txtStickerSetName;
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.TextBox txtBrowse;
@@ -266,5 +280,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ImageList imageListChild;
         private System.Windows.Forms.ImageList imageListParent;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

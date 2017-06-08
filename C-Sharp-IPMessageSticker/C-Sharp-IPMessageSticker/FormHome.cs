@@ -24,6 +24,7 @@ namespace C_Sharp_IPMessageSticker
 
         private int screenWidth;
         private int screenHeight;
+        
         private IEnumerable<StickerSet> AllSticker;
 
 
@@ -159,6 +160,8 @@ namespace C_Sharp_IPMessageSticker
 
         private void linkLabelSetting_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+
+
         }
 
         private void btnHideShow_Click(object sender, EventArgs e)
