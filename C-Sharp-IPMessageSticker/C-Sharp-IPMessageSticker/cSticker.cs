@@ -125,7 +125,7 @@ namespace C_Sharp_IPMessageSticker
             var myEncoderParameters = new EncoderParameters(1);
             myEncoderParameters.Param[0] = new EncoderParameter(Encoder.Quality, 100);
 
-            bmp1 = (Image)(new Bitmap(bmp1, new Size(64, 64)));
+            bmp1 = (Image)(new Bitmap(bmp1, new Size(96, 96)));
             bmp1.Save(destination, jpgEncoder, myEncoderParameters);
         }
 
