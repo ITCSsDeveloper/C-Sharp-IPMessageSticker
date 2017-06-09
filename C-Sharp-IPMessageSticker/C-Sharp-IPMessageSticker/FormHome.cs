@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -27,18 +26,14 @@ namespace C_Sharp_IPMessageSticker
 
         private IEnumerable<StickerSet> AllSticker;
 
-
         public FormHome()
         {
             InitializeComponent();
 
-
-            
-
             screenWidth = Screen.PrimaryScreen.Bounds.Width;
             screenHeight = Screen.PrimaryScreen.Bounds.Height;
             Location = new Point(screenWidth - (Width), screenHeight - (Height + 40));
-            formPreview = new FormPreview(new Point(screenWidth - 128, screenHeight - (Height + 40) - 128));
+            formPreview = new FormPreview(new Point(screenWidth - 138, screenHeight - (Height + 40) - 128));
             formPreview.Hide();
             AllSticker = cSticker.GetStickers();
 
@@ -50,8 +45,6 @@ namespace C_Sharp_IPMessageSticker
 
         [DllImport("user32.dll")]
         public static extern void SwitchToThisWindow(IntPtr hWnd, bool turnon);
-
-
 
         public void GetListItemParent()
         {
@@ -94,7 +87,6 @@ namespace C_Sharp_IPMessageSticker
                     Console.WriteLine(@"This is not an image file");
                 }
             }
-
 
             listViewChild.View = View.LargeIcon;
             imageListChild.ImageSize = new Size(40, 40);
@@ -158,7 +150,6 @@ namespace C_Sharp_IPMessageSticker
             Show();
         }
 
-
         private void linkLabelSetting_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             using (var form = new FormSetting())
@@ -196,8 +187,6 @@ namespace C_Sharp_IPMessageSticker
                 Hide();
             }
         }
-
-
 
         private void listViewParent_MouseClick(object sender, MouseEventArgs e)
         {
